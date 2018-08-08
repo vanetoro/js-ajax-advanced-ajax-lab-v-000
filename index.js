@@ -7,6 +7,8 @@ function getRepositories(){
 
 function showRepositories(){
   const repos = JSON.parse(this.responseText)
-  const repoList = `<ul> ${repo.map(r=> '<li>' + r.name + '</li>').join('')}</ul>`
+  const src = document.getElementById("repository-template").innerHTML
+  const template = Handlebars.compile(src)
+  const repoList = template(repos)
   document.getElementById('repositories').innerHTML = repoList
 }
